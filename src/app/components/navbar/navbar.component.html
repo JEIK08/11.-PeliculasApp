@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">PelisApp</span>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/inicio']">Inicio</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/buscar']">Buscar</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/detalle']">Detalle</a>
+      </li> -->
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Mi Película" aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
