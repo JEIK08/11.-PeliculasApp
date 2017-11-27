@@ -10,12 +10,12 @@
 	<h1>Películas en cartelera</h1>
 	<hr>
 	<div class="row">
-		<div class="col-md-4" *ngFor="let lista of peliculasService.cartelera; index as l">
+		<div class="col-md-4" *ngFor="let sublista of cartelera; index as l">
 			<div id="carouselExampleControls-cartelera{{l}}" class="carousel slide" data-ride="carousel" data-interval="10000">
 				<div class="carousel-inner">
-					<div *ngFor="let peli of lista; index as i" [ngClass]="{'active': i == 0}"
+					<div *ngFor="let peli of sublista; index as i" [ngClass]="{'active': i == 0}"
 					class="carousel-item">
-						<img [routerLink]="['/1', peli.id]" class="d-block w-100" height="500" src="http://image.tmdb.org/t/p/w600{{ peli.poster_path }}" alt="First slide">
+						<img [routerLink]="['/1', peli.id]" class="d-block" height="500" src="http://image.tmdb.org/t/p/w600{{ peli.poster_path }}" alt="First slide">
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleControls-cartelera{{l}}" role="button" data-slide="prev">
@@ -33,10 +33,10 @@
 	<h1>Populares</h1>
 	<hr>
 	<div class="row">
-		<div class="col-md-4" *ngFor="let lista of peliculasService.populares; index as l">
+		<div class="col-md-4" *ngFor="let sublista of populares; index as l">
 			<div id="carouselExampleControls-populares{{l}}" class="carousel slide" data-ride="carousel" data-interval="10000">
 				<div class="carousel-inner">
-					<div *ngFor="let peli of lista; index as i" [ngClass]="{'active': i == 0}"
+					<div *ngFor="let peli of sublista; index as i" [ngClass]="{'active': i == 0}"
 					class="carousel-item">
 						<img [routerLink]="['/2', peli.id]" class="d-block w-100" height="500" src="http://image.tmdb.org/t/p/w600{{ peli.poster_path }}" alt="First slide">
 					</div>
@@ -56,10 +56,10 @@
 	<h1>Populares entre los mas pequeños</h1>
 	<hr>
 	<div class="row">
-		<div class="col-md-4" *ngFor="let lista of peliculasService.ninos; index as l">
+		<div class="col-md-4" *ngFor="let sublista of ninos; index as l">
 			<div id="carouselExampleControls-ninos{{l}}" class="carousel slide" data-ride="carousel" data-interval="10000">
 				<div class="carousel-inner">
-					<div *ngFor="let peli of lista; index as i" [ngClass]="{'active': i == 0}"
+					<div *ngFor="let peli of sublista; index as i" [ngClass]="{'active': i == 0}"
 					class="carousel-item">
 						<img [routerLink]="['/3', peli.id]" class="d-block w-100" height="500" src="http://image.tmdb.org/t/p/w600{{ peli.poster_path }}" alt="First slide">
 					</div>

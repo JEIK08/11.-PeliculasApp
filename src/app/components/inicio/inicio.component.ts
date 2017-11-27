@@ -10,7 +10,31 @@ import { PeliculasService } from '../../services/peliculas.service';
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private peliculasService: PeliculasService, private router: Router) {}
+	private cartelera: any[];
+	private populares: any[];
+	private ninos: any[];
+
+  constructor(private peliculasService: PeliculasService, private router: Router) {
+  	console.log('Constructor Inicio');
+  	this.cartelera = [];
+  	this.populares = [];
+  	this.ninos = [];
+  	peliculasService.cartelera.subscribe(datos => {
+  		this.cartelera.push(datos.results.slice(0,5));
+  		this.cartelera.push(datos.results.slice(5,10));
+  		this.cartelera.push(datos.results.slice(10,15));
+  	});
+  	peliculasService.populares.subscribe(datos => {
+  		this.populares.push(datos.results.slice(0,5));
+  		this.populares.push(datos.results.slice(5,10));
+  		this.populares.push(datos.results.slice(10,15));
+  	});
+  	peliculasService.ninos.subscribe(datos => {
+  		this.ninos.push(datos.results.slice(0,5));
+  		this.ninos.push(datos.results.slice(5,10));
+  		this.ninos.push(datos.results.slice(10,15));
+  	});
+  }
 
   ngOnInit() {}
 
