@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { PeliculasService } from '../../services/peliculas.service';
 
@@ -7,11 +8,29 @@ import { PeliculasService } from '../../services/peliculas.service';
   templateUrl: './buscar.component.html',
   styles: []
 })
-export class BuscarComponent implements OnInit {
+export class BuscarComponent {
 
-  constructor(private peliculasService: PeliculasService) { }
+	private nombre: string = '';
+	private resultado: any[];
 
-  ngOnInit() {
+  constructor(private peliculasService: PeliculasService, private router: Router, private activatedRoute: ActivatedRoute) {
+  	this.resultado = [];
+  	activatedRoute.params.subscribe(p => {
+  		if(p.nombre) this.nombre = p.nombre;
+  		this.buscar();
+  	});
+  }
+
+  buscar(){
+  	if(this.nombre != ''){
+  		this.peliculasService.buscarPelicula(this.nombre).subscribe(datos => {
+	  		this.resultado = datos.results;
+	  	});
+  	}else this.resultado.length = 0;
+  }
+
+  ver(p: any){
+  	this.router.navigate(['/'+this.nombre, p.id]);
   }
 
 }

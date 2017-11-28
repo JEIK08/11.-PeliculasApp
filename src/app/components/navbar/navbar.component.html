@@ -13,8 +13,8 @@
         <a class="nav-link" [routerLink]="['/detalle']">Detalle</a>
       </li> -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Mi Película" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" (ngSubmit)="buscar()" novalidate="">
+      <input class="form-control mr-sm-2" type="search" placeholder="Mi Película" aria-label="Search" name="texto" [(ngModel)]="texto" required="">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
     </form>
   </div>

@@ -15,7 +15,6 @@ export class InicioComponent implements OnInit {
 	private ninos: any[];
 
   constructor(private peliculasService: PeliculasService, private router: Router) {
-  	console.log('Constructor Inicio');
   	this.cartelera = [];
   	this.populares = [];
   	this.ninos = [];

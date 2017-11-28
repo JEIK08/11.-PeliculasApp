@@ -12,12 +12,13 @@ export class DetalleComponent {
 
 	private peli: any;
   private aInicio: boolean;
+  private nombreBusqueda: string;
 
   constructor(private peliculasService: PeliculasService, private activatedRoute: ActivatedRoute, private router: Router) {
   	activatedRoute.params.subscribe(p => {
   		let desde = Number(p.desde);
       let id = Number(p.id);
-  		this.aInicio = desde >= 1 && desde <= 3;
+      this.aInicio = desde >= 1 && desde <= 3;
       switch (desde) {
         case 1: peliculasService.cartelera.subscribe(datos => {
           for(let peli of datos.results){
@@ -42,14 +43,20 @@ export class DetalleComponent {
             }
           }
         });
-       break;
+        break;
+        default:
+          this.nombreBusqueda = p.desde;
+          this.peliculasService.buscarPeliculaId(p.id).subscribe(datos => this.peli = datos);
       }
-  	});
+    });
   	
   }
 
   regresar(){
     if(this.aInicio) this.router.navigate(['/inicio']);
+    else {
+      this.router.navigate(['/buscar', this.nombreBusqueda]);
+    }
   }
 
 }

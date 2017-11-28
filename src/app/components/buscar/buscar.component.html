@@ -1,3 +1,16 @@
-<p>
-  buscar works!
-</p>
+<br><br>
+<div class="container">
+	<p>Buscar</p>
+	<input type="text" class="form-control" placeholder="Mi Pelicula" name="nombre" [(ngModel)]="nombre" (keyup)="buscar()">
+	<br>
+	<div class="card-columns" *ngIf="nombre != ''">
+		<div class="card" *ngFor="let peli of resultado; index as i">
+			<img class="card-img-top" [src]="peli.backdrop_path | cardImg" alt="Card image cap">
+			<div class="card-body">
+				<h4 class="card-title">{{ peli.title }}</h4>
+				<p class="card-text">{{ peli.overview }}</p>
+				<button type="button" class="btn btn-primary btn-block" (click)="ver(peli)">Ver mas...</button>
+			</div>
+		</div>
+	</div>
+</div>

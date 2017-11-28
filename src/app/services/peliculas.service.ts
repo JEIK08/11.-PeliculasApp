@@ -21,7 +21,6 @@ export class PeliculasService {
     this.getCartelera();
     this.getPopulares();
     this.getPopularesNinos();
-    console.log('Constructor Servicio Pelis');
   }
 
   getCartelera(){
@@ -44,8 +43,13 @@ export class PeliculasService {
   }
 
   buscarPelicula(nombre: string){
-  	let url = `${ this.urlMoviedb }search/movie?quiery=${ nombre }&sort_by=popularity.desc&api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+  	let url = `${ this.urlMoviedb }search/movie?query=${ nombre }&sort_by=popularity.desc&api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
   	return this.jsonp.get(url).map(res => res.json());
+  }
+
+  buscarPeliculaId(id: string){
+    let url = `${ this.urlMoviedb }movie/${ id }?api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    return this.jsonp.get(url).map(res => res.json());
   }
 
 }
